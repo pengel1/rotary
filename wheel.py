@@ -10,11 +10,14 @@ class MusicPlayer:
 
     def play_music(self):
         if not self.__playing_music:
-            # do stuff here play that music
-            self.__playing_music = True
-            pygame.mixer.init()
-            pygame.mixer.music.load('./sounds/music.mp3')
-            pygame.mixer.music.play()
+            try:
+                # do stuff here play that music
+                self.__playing_music = True
+                pygame.mixer.init()
+                pygame.mixer.music.load('./sounds/music.mp3')
+                pygame.mixer.music.play()
+            except Exception as e:
+                print("Exception %s", e)
 
     def stop_music(self):
         if self.__playing_music:
