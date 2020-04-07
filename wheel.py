@@ -17,7 +17,7 @@ class MusicPlayer:
                 pygame.mixer.music.load('./sounds/music.mp3')
                 pygame.mixer.music.play()
             except Exception as e:
-                print("Exception %s", e)
+                print("Exception %s" % e)
 
     def stop_music(self):
         if self.__playing_music:
