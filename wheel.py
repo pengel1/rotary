@@ -96,10 +96,10 @@ class Rotary:
 
 
 def main():
-    rotary = Rotary(8)
-    rotary.run()
-    #m = MusicPlayer()
-    #m.play_music()
+    #rotary = Rotary(8)
+    #rotary.run()
+    m = MusicPlayer()
+    m.play_music()
 
 
 if __name__ == "__main__":
