@@ -20,6 +20,7 @@ class MusicPlayer:
                 print("Exception %s" % e)
 
     def stop_music(self):
+        print('Stopping music..')
         if self.__playing_music:
             # do stuff that turns off music
             pygame.mixer.music.stop()
