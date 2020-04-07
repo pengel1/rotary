@@ -1,12 +1,20 @@
 from RPi import GPIO
 from time import sleep
 import pygame
+import os, random
+
 
 class MusicPlayer:
+
     def __init__(self):
         self.__playing_music = False
         pygame.init()
         pygame.mixer.init()
+
+    def get_random_file(self, starts_with):
+        files = os.listdir("./sounds/")
+        filtered_files = filter(lambda k: starts_with in k, files)
+        return random.choice(filtered_files)
 
     def play_music(self):
         if not self.__playing_music:
@@ -14,7 +22,8 @@ class MusicPlayer:
                 # do stuff here play that music
                 self.__playing_music = True
                 print("Playing some music...")
-                pygame.mixer.music.load('./sounds/music.mp3')
+                file = self.get_random_file('spinner')
+                pygame.mixer.music.load(file)
                 pygame.mixer.music.play()
             except Exception as e:
                 print("Exception %s" % e)
@@ -24,6 +33,8 @@ class MusicPlayer:
         if self.__playing_music:
             # do stuff that turns off music
             pygame.mixer.music.stop()
+            file = self.get_random_file('winner')
+            pygame.mixer.music.load(file)
             self.__playing_music = False
 
 
