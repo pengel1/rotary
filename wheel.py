@@ -26,8 +26,7 @@ class MusicPlayer:
                 self.__playing_music = True
                 print("Playing some music...")
                 file = self.get_random_file('spinner')
-                pygame.mixer.music.load(file)
-                pygame.mixer.music.play()
+                pygame.mixer.Sound.play(file)
             except Exception as e:
                 print("Exception %s" % e)
 
@@ -37,7 +36,7 @@ class MusicPlayer:
             # do stuff that turns off music
             pygame.mixer.music.stop()
             file = self.get_random_file('winner')
-            pygame.mixer.music.load(file)
+            pygame.mixer.Sound.play(file)
             self.__playing_music = False
 
 
