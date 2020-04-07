@@ -11,6 +11,7 @@ class MusicPlayer:
             try:
                 # do stuff here play that music
                 self.__playing_music = True
+                print("Playing some music...")
                 playsound('./sounds/music.mp3')
             except Exception as e:
                 print("Exception %s" % e)
@@ -29,7 +30,7 @@ class Wheel:
         :param sides:
         """
         self.sides = sides
-        self.spinning = False 
+        self.spinning = False
         self.current_pos = 0
         self.music_player = MusicPlayer()
 
@@ -90,10 +91,10 @@ class Rotary:
 
 
 def main():
-    #rotary = Rotary(8)
-    #rotary.run()
-    m = MusicPlayer()
-    m.play_music()
+    rotary = Rotary(8)
+    rotary.run()
+    #m = MusicPlayer()
+    #m.play_music()
 
 
 if __name__ == "__main__":
