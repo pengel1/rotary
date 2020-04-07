@@ -15,11 +15,7 @@ class MusicPlayer:
             pygame.mixer.init()
             pygame.mixer.music.load('./sounds/musics.mp3')
             pygame.mixer.music.play()
-            # while True:
-            #     for event in event.get():
-            #         if event.type == SONG_END:
-            #             print("the song ended!")
-            #         sleep(0.01)
+
 
     def stop_music(self):
         if self.__playing_music:
@@ -59,6 +55,9 @@ class Wheel:
         if self.current_pos > self.sides:
             self.current_pos = 0
 
+    def stop_spinning(self):
+        self.music_player.stop_music()
+
 
 class Rotary:
 
@@ -82,7 +81,11 @@ class Rotary:
                         self.wheel.spin_forward()
                     else:
                         self.wheel.spin_backwards()
+
                     print(self.wheel.current_pos)
+                else:
+                    # stopped spinning
+                    self.wheel.stop_sprinning()
                 self.clkLastState = clk_state
                 sleep(0.01)
         finally:
