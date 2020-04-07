@@ -13,7 +13,7 @@ class MusicPlayer:
             # do stuff here play that music
             self.__playing_music = True
             pygame.mixer.init()
-            pygame.mixer.music.load('/home/pi/rotary/sounds/musics.mp3')
+            pygame.mixer.music.load('/home/pi/rotary/sounds/music.mp3')
             pygame.mixer.music.play()
 
     def stop_music(self):
