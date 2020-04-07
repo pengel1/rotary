@@ -1,6 +1,8 @@
 from RPi import GPIO
 from time import sleep
-from pygame import mixer  # Load the popular external library
+import pygame  # Load the popular external library
+
+SONG_END = pygame.USEREVENT + 1
 
 class MusicPlayer:
     def __init__(self):
@@ -10,15 +12,21 @@ class MusicPlayer:
         if not self.__playing_music:
             # do stuff here play that music
             self.__playing_music = True
-            mixer.init()
-            mixer.music.load('./sounds/musics.mp3')
-            mixer.music.play()
+            pygame.mixer.init()
+            pygame.mixer.music.load('./sounds/musics.mp3')
+            pygame.mixer.music.play()
+            while True:
+                for event in event.get():
+                    if event.type == SONG_END:
+                        print("the song ended!")
+                    sleep(0.01)
 
     def stop_music(self):
         if self.__playing_music:
             # do stuff that turns off music
-            mixer.music.stop()
+            pygame.mixer.music.stop()
             self.__playing_music = False
+
 
 class Wheel:
 
@@ -30,6 +38,7 @@ class Wheel:
         self.sides = sides
         self.spinning = False
         self.current_pos = 0
+        self.music_player = MusicPlayer()
 
     def update_wheel_position(self, direction):
         self.spinning = True
@@ -39,11 +48,13 @@ class Wheel:
             self.spin_forward()
 
     def spin_backwards(self):
+        self.music_player.play_music()
         self.current_pos -= 1
         if self.current_pos < 0:
             self.current_pos = self.sides
 
     def spin_forward(self):
+        self.music_player.play_music()
         self.current_pos += 1
         if self.current_pos > self.sides:
             self.current_pos = 0
