@@ -5,6 +5,8 @@ import pygame
 class MusicPlayer:
     def __init__(self):
         self.__playing_music = False
+        pygame.init()
+        pygame.mixer.init()
 
     def play_music(self):
         if not self.__playing_music:
@@ -12,8 +14,6 @@ class MusicPlayer:
                 # do stuff here play that music
                 self.__playing_music = True
                 print("Playing some music...")
-                pygame.init()
-                pygame.mixer.init()
                 pygame.mixer.music.load('./sounds/music.mp3')
                 pygame.mixer.music.play()
                 pygame.event.wait()
