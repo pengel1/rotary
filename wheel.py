@@ -1,7 +1,6 @@
 from RPi import GPIO
 from time import sleep
-from playsound import playsound
-
+import pygame
 
 class MusicPlayer:
     def __init__(self):
@@ -13,13 +12,18 @@ class MusicPlayer:
                 # do stuff here play that music
                 self.__playing_music = True
                 print("Playing some music...")
-                playsound('./sounds/music.mp3')
+                pygame.init()
+                pygame.mixer.init()
+                pygame.mixer.music.load('./sounds/music.mp3')
+                pygame.mixer.music.play()
+                pygame.event.wait()
             except Exception as e:
                 print("Exception %s" % e)
 
     def stop_music(self):
         if self.__playing_music:
             # do stuff that turns off music
+            pygame.mixer.music.stop()
             self.__playing_music = False
 
 
