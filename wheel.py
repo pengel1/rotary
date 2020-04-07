@@ -75,11 +75,13 @@ class Rotary:
         self.wheel = Wheel(sides)
 
     def run(self):
+        has_not_moved = 0
         try:
             while True:
                 clk_state = GPIO.input(self.clk)
                 if clk_state != self.clkLastState:
                     dt_state = GPIO.input(self.dt)
+                    has_not_moved = 1
                     if dt_state != clk_state:
                         self.wheel.spin_forward()
                     else:
@@ -87,8 +89,12 @@ class Rotary:
 
                     print(self.wheel.current_pos)
                 else:
-                    # stopped spinning
-                    self.wheel.stop_spinning()
+                    if has_not_moved > 0 and has_not_moved > 100:
+                        # test if stopped spinning stopped spinning
+                        self.wheel.stop_spinning()
+                        has_not_moved = 0
+                    else:
+                        has_not_moved += 1
                 self.clkLastState = clk_state
                 sleep(0.01)
         finally:
