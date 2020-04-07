@@ -1,8 +1,6 @@
-from RPi import GPIO
+#from RPi import GPIO
 from time import sleep
-import pygame  # Load the popular external library
-
-SONG_END = pygame.USEREVENT + 1
+from playsound import playsound
 
 class MusicPlayer:
     def __init__(self):
@@ -13,16 +11,13 @@ class MusicPlayer:
             try:
                 # do stuff here play that music
                 self.__playing_music = True
-                pygame.mixer.init()
-                pygame.mixer.music.load('./sounds/music.mp3')
-                pygame.mixer.music.play()
+                playsound('./sounds/music.mp3')
             except Exception as e:
                 print("Exception %s" % e)
 
     def stop_music(self):
         if self.__playing_music:
             # do stuff that turns off music
-            pygame.mixer.music.stop()
             self.__playing_music = False
 
 
@@ -95,8 +90,10 @@ class Rotary:
 
 
 def main():
-    rotary = Rotary(8)
-    rotary.run()
+    #rotary = Rotary(8)
+    #rotary.run()
+    m = MusicPlayer()
+    m.play_music()
 
 
 if __name__ == "__main__":
