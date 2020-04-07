@@ -14,6 +14,7 @@ class MusicPlayer:
     def get_random_file(self, starts_with):
         files = os.listdir("./sounds/")
         filtered_files = filter(lambda k: starts_with in k, files)
+        print("files are %s" % filtered_files)
         return random.choice(filtered_files)
 
     def play_music(self):
