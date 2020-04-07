@@ -1,5 +1,24 @@
 from RPi import GPIO
 from time import sleep
+from pygame import mixer  # Load the popular external library
+
+class MusicPlayer:
+    def __init__(self):
+        self.__playing_music = False
+
+    def play_music(self):
+        if not self.__playing_music:
+            # do stuff here play that music
+            self.__playing_music = True
+            mixer.init()
+            mixer.music.load('./sounds/musics.mp3')
+            mixer.music.play()
+
+    def stop_music(self):
+        if self.__playing_music:
+            # do stuff that turns off music
+            mixer.music.stop()
+            self.__playing_music = False
 
 class Wheel:
 
