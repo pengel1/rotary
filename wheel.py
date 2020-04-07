@@ -16,7 +16,6 @@ class MusicPlayer:
             pygame.mixer.music.load('./sounds/musics.mp3')
             pygame.mixer.music.play()
 
-
     def stop_music(self):
         if self.__playing_music:
             # do stuff that turns off music
@@ -85,7 +84,7 @@ class Rotary:
                     print(self.wheel.current_pos)
                 else:
                     # stopped spinning
-                    self.wheel.stop_sprinning()
+                    self.wheel.stop_spinning()
                 self.clkLastState = clk_state
                 sleep(0.01)
         finally:
