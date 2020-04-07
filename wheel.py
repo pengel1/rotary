@@ -29,7 +29,7 @@ class Wheel:
         :param sides:
         """
         self.sides = sides
-        self.spinning = False
+        self.spinning = False 
         self.current_pos = 0
         self.music_player = MusicPlayer()
 
