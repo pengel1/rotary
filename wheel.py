@@ -1,6 +1,7 @@
-#from RPi import GPIO
+from RPi import GPIO
 from time import sleep
 from playsound import playsound
+
 
 class MusicPlayer:
     def __init__(self):
