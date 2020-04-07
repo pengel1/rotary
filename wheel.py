@@ -15,11 +15,11 @@ class MusicPlayer:
             pygame.mixer.init()
             pygame.mixer.music.load('./sounds/musics.mp3')
             pygame.mixer.music.play()
-            while True:
-                for event in event.get():
-                    if event.type == SONG_END:
-                        print("the song ended!")
-                    sleep(0.01)
+            # while True:
+            #     for event in event.get():
+            #         if event.type == SONG_END:
+            #             print("the song ended!")
+            #         sleep(0.01)
 
     def stop_music(self):
         if self.__playing_music:
