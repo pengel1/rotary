@@ -17,7 +17,7 @@ class MusicPlayer:
         print('files %s' % files)
         filtered_files = list(filter(lambda k: starts_with in k, files))
         print("files are %s" % filtered_files)
-        return random.choice(filtered_files)
+        return './sounds/' + random.choice(filtered_files)
 
     def play_music(self):
         if not self.__playing_music:
